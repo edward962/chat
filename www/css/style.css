@@ -1,0 +1,670 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+a, a:active, a:hover {
+    text-decoration: none;
+    outline: none;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+.fake-upload-button {
+    margin-top: 20px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.preview-image {
+    max-width: 400px;
+    width: 90%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: block;
+}
+/* == style buttons == */
+input, button, a.button {
+    width: 90%;
+    display: block;
+    margin: 20px auto;
+    color: white;
+    border: none;
+    padding: 14px 0;
+    background: #0094ff;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+    input[type="submit"] {
+        background: #00C182;
+    }
+
+#reset-form .button {
+    background: #6AF1C5;
+}
+
+#share-button {
+}
+
+#window-shade {
+    background: white;
+    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: -50px;
+    bottom: -50px;
+    left: -20px;
+    right: -20px;
+    z-index: 89;
+    display: none;
+}
+
+.popup {
+    position: fixed;
+    left: 20px;
+    right: 20px;
+    top: 140px;
+    z-index: 90;
+    background: white;
+    display: none;
+}
+
+.image-group {
+    background: #6AF1C5;
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    text-align: center;
+    overflow: hidden;
+}
+
+    .image-group h2 {
+        margin-top: 0;
+        color: white;
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 1.5em;
+    }
+
+    .image-group img {
+        width: 90%;
+        max-width: 100%;
+        height: auto;
+    }
+
+.image-container {
+    background: white;
+    padding-top: 10px;
+}
+
+    .image-container p {
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+
+@media (min-width:800px) {
+    .image-group {
+        width: 46%;
+        margin-right: 4%;
+        float: left;
+    }
+
+    #main-form {
+        margin-top: 70px;
+    }
+}
+
+
+/* TABS AT THE TOP */
+.container {
+    padding: 0;
+}
+
+#tab-container {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0094ff+0,00badb+100 */
+    background: #0094ff; /* Old browsers */
+    background: -moz-linear-gradient(60deg, #0094ff 0%, #00badb 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(60deg, #0094ff 0%,#00badb 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(60deg, #0094ff 0%,#00badb 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0094ff', endColorstr='#00badb',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    color: white;
+    padding-top: 6px;
+    overflow: hidden;
+    list-style: none;
+    text-indent: 0;
+    padding-left: 0;
+    position: fixed;
+    top: 50px;
+    width: 100%;
+    left: 0;
+    z-index: 10;
+}
+
+.tab {
+    width: 25.000%;
+    box-sizing: border-box;
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1em;
+    letter-spacing: 2px;
+    text-decoration: none;
+    padding: 6px 0;
+    padding-bottom: 12px;
+    text-align: center;
+    list-style: none;
+    text-indent: 0;
+    margin-left: 0;
+    /*border-left:2px #0094ff solid;
+        border-right:2px #0094ff solid;*/
+}
+
+    .tab.selected {
+        background: white;
+        color: #0094ff;
+    }
+
+.tab-content {
+    display: none;
+    padding: 10px 20px;
+    padding-top: 60px;
+}
+
+    .tab-content.selected {
+        display: block;
+    }
+
+.offline-content {
+    padding-top: 60px;
+    font-size: 1.5em;
+    color: #dddddd;
+    text-align: center;
+}
+
+#reload-button {
+    background: #dddddd;
+}
+
+.loading-gif {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+}
+
+
+#loading {
+    background: white url('../img/loadingDots.gif') center center no-repeat;
+    background-size: 128px;
+    padding-top: 160px;
+    position: fixed;
+    z-index: 50;
+    left: -20px;
+    right: -20px;
+    top: -100px;
+    bottom: -100px;
+    font-size: 1.5em;
+    color: #dddddd;
+    text-align: center;
+}
+
+/* STORED GROUPS */
+.stored-group {
+    padding: 40px;
+    border-bottom: 2px #eeeeee solid;
+}
+
+    .stored-group img {
+        max-width: 100%;
+    }
+
+/* TAGS GROUPS */
+
+#tag-filter {
+    overflow: hidden;
+}
+
+    #tag-filter li {
+        list-style: none;
+        float: left;
+        box-sizing: border-box;
+        margin-right: 10px;
+        padding: 20px;
+        background: #aaaaaa;
+        color: white;
+    }
+
+        #tag-filter li.selected {
+            background: #ffaa00;
+        }
+
+.filter-instructions {
+    font-size: 0.9em;
+}
+
+
+/*CHAT*/
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+}
+.btn-circle.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+}
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    font-size: 24px;
+    line-height: 1.33;
+    border-radius: 35px;
+}
+#createThreadWithImg{
+    position: fixed;
+    right: 20px;
+    bottom: 80px;
+}
+#threadMenuButton, #chatMenuButton{
+    position: fixed;
+    right: 20px;
+    bottom: 80px;
+}
+.chatModalMenu{
+    text-align: center;
+}
+.chatChannel{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.chat {
+
+    width: 100%;
+    height: calc(100% - 72px);
+}
+
+.chat-label {
+
+
+
+    font-family: 'Lato';
+    font-weight: 500;
+    font-size: 18px;
+    color: white;
+
+
+}
+#chatBottom{
+    background-color: aliceblue;
+    border-top: 1px solid;  width: 100%;
+    position: fixed;
+    bottom: 0;
+    left:0;
+}
+#chatTop{
+    background-color: white;
+    border-bottom: 1px solid;  width: 100%;
+    position: fixed;
+    height: 30px;
+    left:0;
+
+}
+.chat-widget{
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: auto;
+    min-height: 200px;
+    height: 100%;
+    margin-top: 43px;
+}
+
+
+.portlet {
+    margin-bottom: 15px;
+}
+
+.btn-white {
+    border-color: #cccccc;
+    color: #333333;
+    background-color: #ffffff;
+}
+
+.portlet {
+
+}
+
+.portlet .portlet-heading {
+    padding: 0 15px;
+}
+
+.portlet .portlet-heading h4 {
+    padding: 1px 0;
+    font-size: 16px;
+}
+
+.portlet .portlet-heading a {
+    color: #fff;
+}
+
+.portlet .portlet-heading a:hover,
+.portlet .portlet-heading a:active,
+.portlet .portlet-heading a:focus {
+    outline: none;
+}
+
+
+.portlet .portlet-heading .portlet-title {
+    float: left;
+}
+#portletHeader{
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 93px;
+    z-index: 1;
+}
+
+.portlet .portlet-heading .portlet-title h4 {
+    margin: 10px 0;
+}
+
+.portlet .portlet-heading .portlet-widgets {
+    float: right;
+    margin: 8px 0;
+}
+
+.portlet .portlet-heading .portlet-widgets .tabbed-portlets {
+    display: inline;
+}
+
+.portlet .portlet-heading .portlet-widgets .divider {
+    margin: 0 5px;
+}
+
+.portlet .portlet-body {
+    padding: 15px;
+    background: #fff;
+}
+
+.portlet .portlet-footer {
+    padding: 10px 15px;
+    background: #e0e7e8;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+.portlet .portlet-footer ul {
+    margin: 0;
+}
+
+.portlet-green,
+.portlet-green>.portlet-heading {
+    border-color: #16a085;
+}
+
+.portlet-green>.portlet-heading {
+    color: #fff;
+    background-color: #16a085;
+}
+
+.portlet-orange,
+.portlet-orange>.portlet-heading {
+    border-color: #f39c12;
+}
+
+.portlet-orange>.portlet-heading {
+    color: #fff;
+    background-color: #f39c12;
+}
+
+.portlet-blue,
+.portlet-blue>.portlet-heading {
+    border-color: #2980b9;
+}
+
+.portlet-blue>.portlet-heading {
+    color: #fff;
+    background-color: #2980b9;
+}
+
+.portlet-red,
+.portlet-red>.portlet-heading {
+    border-color: #e74c3c;
+}
+
+.portlet-red>.portlet-heading {
+    color: #fff;
+    background-color: #e74c3c;
+}
+
+.portlet-purple,
+.portlet-purple>.portlet-heading {
+    border-color: #8e44ad;
+}
+
+.portlet-purple>.portlet-heading {
+    color: #fff;
+    background-color: #8e44ad;
+}
+
+.portlet-default,
+.portlet-dark-blue,
+.portlet-default>.portlet-heading,
+.portlet-dark-blue>.portlet-heading {
+    border-color: #34495e;
+}
+
+.portlet-default>.portlet-heading,
+.portlet-dark-blue>.portlet-heading {
+    color: #fff;
+    background-color: #34495e;
+}
+
+.portlet-basic,
+.portlet-basic>.portlet-heading {
+    border-color: #333;
+}
+
+.portlet-basic>.portlet-heading {
+    border-bottom: 1px solid #333;
+    color: #333;
+    background-color: #fff;
+}
+
+@media(min-width:768px) {
+    .portlet {
+        margin-bottom: 30px;
+    }
+}
+
+.text-green {
+    color: #16a085;
+}
+
+.text-orange {
+    color: #f39c12;
+}
+
+.text-red {
+    color: #e74c3c;
+}
+
+
+html{
+    height: 100%;
+    min-height: 100%;
+}
+body, .body-content, .tab-content, #chat_container, .container, .portlet, #chat, .ccChat{
+    height: inherit;
+}
+#tab-content-3{
+    padding-top:43px;
+}
+.chat-input-file {
+    width: 40px;
+    height: 40px;
+    float: left;
+    padding: 10px;
+    margin-bottom: 3px;
+    border: 1px solid #abb8c4;
+    -webkit-border-top-left-radius: 2px;
+    border-top-left-radius: 2px;
+    -webkit-border-bottom-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    background: url("../img/photo-camera.png") no-repeat center center;
+    cursor: pointer;
+    background-color: #5cb85c;
+    border-radius: 5px;
+}
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+#sendMessage, #messageChatInput{
+    width: 100%;
+    max-width: 100%;
+    margin: 0px;
+    text-transform: initial !important;
+}
+
+
+.file-upload {
+    background: url("../img/loading-rectagular.gif") no-repeat center center #f7f8fc;
+}
+label.chat-input-file.file-upload {
+    background: url("../img/loading-rectagular.gif") no-repeat center center #f7f8fc;
+}
+
+
+/* SCROLL  CHANNEL CHATS*/
+#chatThreads {
+    position:absolute;
+    top:95px; bottom:0px;
+    width:100%;
+
+    overflow:auto;
+}
+
+#scroller {
+    position:absolute;
+    /*	-webkit-touch-callout:none;*/
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    width:100%;
+    padding:0;
+}
+
+#scroller ul {
+    list-style:none;
+    padding:0;
+    margin:0;
+    width:100%;
+    text-align:left;
+}
+
+#scroller li {
+    padding:0 10px;
+    height:40px;
+    line-height:40px;
+    border-bottom:1px solid #ccc;
+    border-top:1px solid #fff;
+    background-color:#fafafa;
+    font-size:14px;
+}
+
+#myFrame {
+    position:absolute;
+    top:0; left:0;
+}
+
+
+
+/**
+ *
+ * Pull down styles
+ *
+ */
+#pullDownThreads, #pullUpThreads {
+    background:#fff;
+    height:45px;
+    line-height:45px;
+    padding:5px 10px;
+    border-bottom:1px solid #ccc;
+    font-weight:bold;
+    font-size:14px;
+    color:#888;
+}
+#pullDownThreads .pullDownIcon, #pullUpThreads .pullUpIcon  {
+    display:block; float:left;
+    width:40px; height:40px;
+    background:url('../img/pull-icon@2x.png') 0 0 no-repeat;
+    -webkit-background-size:40px 80px; background-size:40px 80px;
+    -webkit-transition-property:-webkit-transform;
+    -webkit-transition-duration:250ms;
+}
+#pullDownThreads .pullDownIcon {
+    -webkit-transform:rotate(0deg) translateZ(0);
+}
+#pullUpThreads .pullUpIcon  {
+    -webkit-transform:rotate(-180deg) translateZ(0);
+}
+
+#pullDownThreads.flip .pullDownIcon {
+    -webkit-transform:rotate(-180deg) translateZ(0);
+}
+
+#pullUpThreads.flip .pullUpIcon {
+    -webkit-transform:rotate(0deg) translateZ(0);
+}
+
+#pullDownThreads.loading .pullDownIcon, #pullUpThreads.loading .pullUpIcon {
+    background-position:0 100%;
+    -webkit-transform:rotate(0deg) translateZ(0);
+    -webkit-transition-duration:0ms;
+
+    -webkit-animation-name:loading;
+    -webkit-animation-duration:2s;
+    -webkit-animation-iteration-count:infinite;
+    -webkit-animation-timing-function:linear;
+}
+
+@-webkit-keyframes loading {
+    from { -webkit-transform:rotate(0deg) translateZ(0); }
+    to { -webkit-transform:rotate(360deg) translateZ(0); }
+}
+

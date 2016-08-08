@@ -1,0 +1,370 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>Home Page - Image Processor</title>
+    <meta http-equiv="Content-Security-Policy">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="js/modernizr-2.6.2.js"></script>
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="http://WebApp820160720.azurewebsites.net/Home/">Home</a></li>
+                    <li><a href="http://WebApp820160720.azurewebsites.net/Home/About">About</a></li>
+                    <li><a href="http://WebApp820160720.azurewebsites.net/Home/Contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+
+        <ul id="tab-container">
+            <li class="tab" id="tab-0">
+                Home
+            </li>
+            <li class="tab selected" id="tab-1">
+                Camera
+            </li>
+            <li class="tab" id="tab-2">
+                Review
+            </li>
+            <li class="tab" id="tab-3">
+                Social
+            </li>
+        </ul>
+
+        <!-- TAB 1 -->
+        <div class="tab-content" id="tab-content-0">
+            <h2>Welcome to our app!</h2>
+            <p>Click the "Analyze" tab to analyze your object</p>
+            <p>Click the "Review" tab to view your saved objects</p>
+            <p>Click the "Chat" tab to share and discuss</p>
+        </div>
+
+        <!-- TAB 2 -->
+        <div class="tab-content selected" id="tab-content-1">
+            <div id='image-group-container'>
+                <!--<div class='image-container'>
+                    <img src="img/logo.png">
+                </div>-->
+            </div>
+            <div class="col-md-4 async-form-container online-content">
+                <form action="http://WebApp820160720.azurewebsites.net/Home/" enctype="multipart/form-data" method="post" id="main-form">
+                    <fieldset>
+                        <legend>Upload next image</legend>
+                        <div class="editor-field">
+                            <input type='button' value='Take Picture With Camera' id='camera-button'>
+                            <input type='button' id='upload-button' value='Upload Image' class='fake-upload-button'>
+                        </div>
+                        <div class="session">
+                            <input id="key1" name="key1" type="hidden" value="" />
+                            <input id="key2" name="key2" type="hidden" value="" />
+                        </div>
+                    </fieldset>
+                </form> <img src='http://WebApp820160720.azurewebsites.net/img/8-1.gif' class='loading-gif' style="display:none">
+                <div id='reset-form'>
+                    <a class='button' id='reset-button'>Start Over</a>
+                    <!--<span>*You will lose your current images</span>-->
+                </div>
+            </div>
+
+            <div class='offline-content'>
+                <p class='offline-message'>
+                    You must be connected to the internet to use these features
+                </p>
+                <a class='button' id='reload-button'>Try Again</a>
+            </div>
+
+
+            <button type="button" class="btn btn-danger btn-circle btn-xl" style="visibility: hidden" id="createThreadWithImg">
+                <i class="glyphicon glyphicon-list"></i>
+            </button>
+
+
+
+            <!--//MODAL MENU-->
+            <div id="createThreadWithImg_modal" class="modal fade chatModalMenu" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-body">
+
+                            <div style="height: 10px"></div>
+                            <div class="jumbotron">
+                                <p>Post result image to new open chat thread. New thread title</p>
+                                <input type="text" class="form-control" style="text-transform: initial" id="threadImgInput">
+                                <button type="button" class="btn btn-success btn-lg" id="proceedThreadImg">OK</button>
+                            </div>
+
+                            <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Close</button>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- TAB 2 END -->
+
+        <!-- TAB 3 -->
+        <div class="tab-content" id="tab-content-2">
+            <div id='search-result-filter'>
+                <p class='filter-instructions'>
+                    Select the properties you want to filter by
+                </p>
+                <ul id='tag-filter'></ul>
+            </div>
+            <div id='search-result-container'>
+            </div>
+        </div>
+
+        <!-- TAB 4 -->
+        <div class="tab-content" id="tab-content-3">
+
+            <!--THREADS START-->
+            <div id='thread_container' >
+
+
+                    <div id="chatThreads">
+                        <div id="scroller">
+                            <div id="pullDownThreads">
+                                <span class="pullDownIcon"></span><span class="pullDownLabel">Pull down to refresh...</span>
+                            </div>
+
+                            <div id="thelistThreads">
+
+                            </div>
+                            <div id="pullUpThreads" style="visibility: hidden">
+                                <span class="pullUpIcon"></span><span class="pullUpLabel">Pull up to refresh...</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                <button type="button" class="btn btn-primary btn-circle btn-xl" id="threadMenuButton">
+                    <i class="glyphicon glyphicon-list"></i>
+                </button>
+            </div>
+            <!--THREADS END-->
+
+            <!--CHAT WINDOW START-->
+            <div id='chat_container' style="display: none">
+
+                <div class="container bootstrap snippet">
+                    <div class="row ccChat">
+                        <div class="col-xs-12 ccChat">
+                            <div class="portlet portlet-default">
+                                <div class="portlet-heading" id="portletHeader">
+                                    <div class="portlet-title">
+                                        <h4><i class="fa fa-circle text-green"></i><span class="chat-label" > </span></h4>
+                                    </div>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div id="chat" class="panel-collapse collapse in">
+                                    <div style="height: calc(100% - 100px)">
+                                        <div class="portlet-body chat-widget chat-canvas" >
+
+                                        </div>
+                                    </div>
+                                    <div class="portlet-footer">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <label class="chat-input-file" for="chat_file_input">
+                                                    <input type="file" name="file" id="chat_file_input" style="display: none;">
+                                                </label>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <div class="input-group">
+
+                                                    <input type="text" class="form-control" id="messageChatInput" >
+                                                    <span class="input-group-btn">
+                                                         <button class="btn btn-success" type="submit" id="sendMessage">Send</button>
+                                                    </span>
+                                                </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.col-md-4 -->
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+                <button type="button" class="btn btn-primary btn-circle btn-xl" id="chatMenuButton">
+                    <i class="glyphicon glyphicon-list"></i>
+                </button>
+            </div>
+            <!--CHAT WINDOW END-->
+
+
+
+
+
+
+
+        </div>
+            <!--MODALS MENUS START-->
+
+            <!--//main-->
+            <div id="chatMenu_1" class="modal fade chatModalMenu" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-body">
+                            <button type="button" style="white-space: normal;" id="createThread" class="btn btn-default btn-lg">
+                                Create new open chat thread
+                            </button>
+                            <div style="height: 10px"></div>
+                            <div class="jumbotron">
+                                <p>Change screen name</p>
+                                <input type="text" class="form-control" style="text-transform: initial" id="nickNameInput">
+                                <button type="button" class="btn btn-success btn-lg" id="changeNickName">OK</button>
+                            </div>
+
+                            <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Close</button>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+           <!-- END MAIN-->
+
+            <!--//createThread-->
+            <div id="chatMenu_2" class="modal fade chatModalMenu" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-body">
+
+                            <div style="height: 10px"></div>
+                            <div class="jumbotron">
+                                <p>Enter a title for your new open chat thread</p>
+                                <input type="text" class="form-control" style="text-transform: initial" id="threadTitleInput">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                        <button type="button" id="createChannel" class="btn btn-success btn-lg">OK</button>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                        <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!--GO THREADS FROM CHAT-->
+            <div id="chatMenu_3" class="modal fade chatModalMenu" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-body">
+                            <button type="button" style="white-space: normal;" id="goThreads" class="btn btn-default btn-lg">
+                                Go to list of open chat threads
+                            </button>
+                            <div style="height: 10px"></div>
+
+                            <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">CLOSE POPUP</button>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!--MODALS MENUS END-->
+        <!-- FOOTER -->
+        <footer></footer>
+    </div>
+
+    <!-- SHARE SCREEN -->
+    <div id="share-screen" class='popup'>
+        <a id='share-button-1' class='button'>Share First Image</a>
+        <a id='share-button-2' class='button multi-share'>Share Second Image</a>
+        <a id='share-button-both' class='button  multi-share'>Share Both</a>
+    </div>
+    <div id="save-screen" class='popup'>
+        <a id='save-button-1' class='button'>Save First Image</a>
+        <a id='save-button-2' class='button multi-save'>Save Second Image</a>
+        <a id='save-button-both' class='button  multi-save'>Save Both</a>
+    </div>
+
+    <div id="window-shade"></div>
+    <!-- LOADING SCREEN -->
+    <div id='loading'>Loading...</div>
+
+
+
+
+
+
+
+
+<div id="hiddenDiv" style="visibility: hidden;" >
+
+</div>
+</body>
+
+<script src="cordova.js"></script>
+
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/respond.min.js"></script>
+<script src="js/SendBird.min.js"></script>
+<script src="js/jquery.blockUI.js"></script>
+<script src="js/underscore.js"></script>
+<script src="js/chat.js"></script>
+<script src="js/util.js"></script>
+<script src="js/iscroll.js"></script>
+<script src="js/iscroll.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script src="js/mainJs.js"></script>
+
+</html>
+

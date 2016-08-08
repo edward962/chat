@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page - Image Processor</title>
+    <style>
+        h1 {
+            font-size: 2em;
+            margin-top: 40%;
+            color: #aaaaaa;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Loading Image Processor</h1>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script>
+        function onDeviceReady() {
+            if (navigator.connection.type == Connection.NONE) {
+                navigator.notification.alert('An internet connection is required to continue');
+            } else {
+                window.location = "http://WebApp820160720.azurewebsites.net/Home/";
+            }
+        }
+        document.addEventListener("deviceready", onDeviceReady, false);
+    </script>
+
+</body>
+</html>

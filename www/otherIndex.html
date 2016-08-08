@@ -1,0 +1,103 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page - Image Processor</title>
+    <link href="http://webapp420160804.azurewebsites.net/Content/bootstrap.css" rel="stylesheet"/>
+<link href="http://webapp420160804.azurewebsites.net/Content/site.css" rel="stylesheet"/>
+
+    <script src="http://webapp420160804.azurewebsites.net/Scripts/modernizr-2.6.2.js"></script>
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="http://webapp420160804.azurewebsites.net/Home/">Home</a></li>
+                    <li><a href="http://webapp420160804.azurewebsites.net/Home/About">About</a></li>
+                    <li><a href="http://webapp420160804.azurewebsites.net/Home/Contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        
+        <ul id="tab-container">
+            <li class="tab" id="tab_0">
+                Home
+            </li>
+            <li class="tab selected" id="tab_1">
+                Analyze
+            </li>
+        </ul>
+        <div class="tab-content" id="tab-content-0">
+            <h2>Welcome to our app!</h2>
+            <p>Click the "Analyze" tab to analyze your object</p>
+        </div>
+        <div class="tab-content selected" id="tab-content-1">
+
+
+    
+    <div class="row">
+                <div class="col-md-4 async-form-container">
+        <form action="http://webapp420160804.azurewebsites.net/Home/" enctype="multipart/form-data" method="post">            <fieldset>
+                <legend>Upload next image</legend>
+                <div class="editor-field">
+                    <input accept="image/*" capture="camera" class="has-preview" id="file" name="file" type="file" value="" />
+                </div>
+
+                <div class="session">
+                    <input id="key1" name="key1" type="hidden" value="" />
+                    <input id="key2" name="key2" type="hidden" value="" />
+                </div>
+
+
+              
+
+                <div class="editor-field">
+                    <input type="submit" value="Upload" />
+                    <img src='http://webapp420160804.azurewebsites.net/img/8-1.gif' class='loading-gif' style="display:none">
+                        <div>*Note:Uploading a new image will start the process over, and your current images will be lost</div>
+
+                </div>
+            </fieldset>
+</form>        </div>
+    </div>
+
+
+
+
+        </div>
+        <footer>
+            
+        </footer>
+    </div>
+
+    <script src="http://webapp420160804.azurewebsites.net/Scripts/jquery-1.10.2.js"></script>
+
+    <script src="http://webapp420160804.azurewebsites.net/Scripts/bootstrap.js"></script>
+<script src="http://webapp420160804.azurewebsites.net/Scripts/respond.js"></script>
+
+    <script src="http://webapp420160804.azurewebsites.net/Scripts/siteWide.js?time=20163525103517"></script>
+    
+
+    <script type="text/javascript" src="cordova.js"></script>
+
+     <script>
+      function onDeviceReady() {
+      }
+      document.addEventListener("deviceready", onDeviceReady, false);
+    </script>
+
+</body>
+</html>
